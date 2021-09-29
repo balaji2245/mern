@@ -65,13 +65,13 @@ class MoviesUpdate extends Component {
     this.setState({ time });
   };
 
-  handleUpdateMovie = async () => {
+  handleUpdateCollege = async () => {
     const { id, name, rating, time } = this.state;
     const arrayTime = time.split("/");
     const payload = { name, rating, time: arrayTime };
 
-    await api.updateMovieById(id, payload).then((res) => {
-      window.alert(`Movie updated successfully`);
+    await api.updateCollegeById(id, payload).then((res) => {
+      window.alert(`College updated successfully`);
       this.setState({
         name: "",
         rating: "",
@@ -82,12 +82,12 @@ class MoviesUpdate extends Component {
 
   componentDidMount = async () => {
     const { id } = this.state;
-    const movie = await api.getMovieById(id);
+    const college = await api.getCollegeById(id);
 
     this.setState({
-      name: movie.data.data.name,
-      rating: movie.data.data.rating,
-      time: movie.data.data.time.join("/"),
+      name: college.data.data.name,
+      rating: college.data.data.rating,
+      time: college.data.data.time.join("/"),
     });
   };
 
@@ -95,7 +95,7 @@ class MoviesUpdate extends Component {
     const { name, rating, time } = this.state;
     return (
       <Wrapper>
-        <Title>Create Movie</Title>
+        <Title>Create College</Title>
 
         <Label>Name: </Label>
         <InputText
