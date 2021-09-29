@@ -1,5 +1,5 @@
-import MoviesList from "./MoviesList";
-import MoviesInsert from "./MoviesInsert";
-import MoviesUpdate from "./MoviesUpdate";
+import CollegesList from "./CollegesList";
+import CollegesInsert from "./CollegesInsert";
+import CollegesUpdate from "./CollegesUpdate";
 
-export { MoviesList, MoviesInsert, MoviesUpdate };
+export { CollegesList, CollegesInsert, CollegesUpdate };
