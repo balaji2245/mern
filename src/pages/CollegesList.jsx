@@ -20,11 +20,11 @@ const Delete = styled.div`
   cursor: pointer;
 `;
 
-class UpdateMovie extends Component {
+class UpdateCollege extends Component {
   updateUser = (event) => {
     event.preventDefault();
 
-    window.location.href = `/movies/update/${this.props.id}`;
+    window.location.href = `/colleges/update/${this.props.id}`;
   };
 
   render() {
@@ -32,16 +32,16 @@ class UpdateMovie extends Component {
   }
 }
 
-class DeleteMovie extends Component {
+class DeleteCollege extends Component {
   deleteUser = (event) => {
     event.preventDefault();
 
     if (
       window.confirm(
-        `Do tou want to delete the movie ${this.props.id} permanently?`
+        `Do tou want to delete the college ${this.props.id} permanently?`
       )
     ) {
-      api.deleteMovieById(this.props.id);
+      api.deleteCollegeById(this.props.id);
       window.location.reload();
     }
   };
@@ -51,11 +51,11 @@ class DeleteMovie extends Component {
   }
 }
 
-class MoviesList extends Component {
+class CollegesList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      movies: [],
+      colleges: [],
       columns: [],
       isLoading: false,
     };
@@ -64,17 +64,17 @@ class MoviesList extends Component {
   componentDidMount = async () => {
     this.setState({ isLoading: true });
 
-    await api.getAllMovies().then((movies) => {
+    await api.getAllColleges().then((colleges) => {
       this.setState({
-        movies: movies.data.data,
+        colleges: colleges.data.data,
         isLoading: false,
       });
     });
   };
 
   render() {
-    const { movies, isLoading } = this.state;
-    console.log("TCL: MoviesList -> render -> movies", movies);
+    const { colleges, isLoading } = this.state;
+    console.log("TCL: CollegesList -> render -> colleges", colleges);
 
     const columns = [
       {
@@ -103,7 +103,7 @@ class MoviesList extends Component {
         Cell: function (props) {
           return (
             <span>
-              <DeleteMovie id={props.original._id} />
+              <DeleteCollege id={props.original._id} />
             </span>
           );
         },
@@ -114,7 +114,7 @@ class MoviesList extends Component {
         Cell: function (props) {
           return (
             <span>
-              <UpdateMovie id={props.original._id} />
+              <UpdateCollege id={props.original._id} />
             </span>
           );
         },
@@ -122,7 +122,7 @@ class MoviesList extends Component {
     ];
 
     let showTable = true;
-    if (!movies.length) {
+    if (!colleges.length) {
       showTable = false;
     }
 
@@ -130,7 +130,7 @@ class MoviesList extends Component {
       <Wrapper>
         {showTable && (
           <ReactTable
-            data={movies}
+            data={colleges}
             columns={columns}
             loading={isLoading}
             defaultPageSize={10}
@@ -143,4 +143,4 @@ class MoviesList extends Component {
   }
 }
 
-export default MoviesList;
+export default CollegesList;
