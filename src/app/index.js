@@ -15,7 +15,7 @@ function App() {
       field: "_id",
       render: (rawData) => (
         <Link
-          href={"http://localhost:3000/api/movie/1000?random=${rawData._id}"}
+          href={"http://localhost:3000/api/college/1000?random=${rawData._id}"}
         >
           {rawData._id}
         </Link>
@@ -32,7 +32,7 @@ function App() {
   ];
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/movies/")
+    fetch("http://localhost:3000/api/colleges/")
       .then((resp) => resp.json())
       // .then((resp) => console.log(resp.data))
       .then((resp) => {
