@@ -1,0 +1,13 @@
+const express = require("express");
+
+const CollegeCtrl = require("../controllers/college-ctrl");
+
+const router = express.Router();
+
+router.post("/college", CollegeCtrl.createCollege);
+router.put("/college/:id", CollegeCtrl.updateCollege);
+router.delete("/college/:id", CollegeCtrl.deleteCollege);
+router.get("/college/:id", CollegeCtrl.getCollegeById);
+router.get("/colleges", CollegeCtrl.getColleges);
+
+module.exports = router;
