@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Map from "./Map";
 
 import { NavBar } from "../components";
-import { MoviesList, MoviesInsert, MoviesUpdate } from "../pages";
+import { CollegesList, CollegesInsert, CollegesUpdate } from "../pages";
 
 import "./App.css";
 
@@ -21,7 +21,7 @@ function App() {
     // { title: "Web Link", field: "website" },
   ];
   useEffect(() => {
-    fetch("http://localhost:3000/api/movies/")
+    fetch("http://localhost:3000/api/colleges/")
       .then((resp) => resp.json())
       .then((resp) => {
         setData(resp);
